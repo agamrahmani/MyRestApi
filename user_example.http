@@ -1,0 +1,63 @@
+@local = http://localhost:3007
+
+### create user
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name": {"first": "first", "last": "first" },
+    "isBusiness": true,
+    "phone": "0505550011",
+    "email": "first@gmail.com", 
+    "password" : "Aa123456", 
+    "address": {
+        "state": "",
+        "country": "israel",
+        "city": "rishon le zion",
+        "street": "hafkius",
+        "houseNumber": 9
+    },
+    "image": {}
+}
+
+### login
+POST {{local}}/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "Aa123456123456"
+}
+
+### get all users, only admin
+GET {{local}}/users
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg5MWVhNjYyMmY0MjIwYzlkMjIzZTciLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MzcwMzk5NzAsImV4cCI6MTczNzA0MzU3MH0.rnv2PfTB26bLYXDrqrq4yez9rEbyQoyQuyriJD2qorg
+
+### get user by id, only resgiter or admin
+GET {{local}}/users/67891bcd4aa16773dbc40639
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg5MWJjZDRhYTE2NzczZGJjNDA2MzkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzM3MDM4ODEwLCJleHAiOjE3MzcwNDI0MTB9.zX3XrypE0EZ6rBHQPDqtPoMywFkP8WmMHLB285HVYp8
+
+### edit user
+PUT {{local}}/users/67891ea6622f4220c9d223df
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg5MWVhNjYyMmY0MjIwYzlkMjIzZGYiLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTczNzAzOTU2OSwiZXhwIjoxNzM3MDQzMTY5fQ.iNafpM7PprGj4CdkfFRB8ATUJzExoDMsilONCskpaIg
+Content-Type: application/json
+
+{
+    "name": {"first": "first", "last": "first1" },
+    "address": {
+        "state": "raa",
+        "country": "israel",
+        "city": "tel aviv",
+        "street": "magnive",
+        "houseNumber": 2
+    }
+}
+
+
+### Change is business status
+PATCH {{local}}/users/677fc6d34b6a7aa9569a7a2e
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdmYzZkMzRiNmE3YWE5NTY5YTdhMmUiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzM2NTk5MjA4LCJleHAiOjE3MzY2MDI4MDh9.mqdWG_KHEvPqDBSiy4KKFm9AxKXBxlwtXP8qfZvK_3w
+
+### Delete user
+DELETE  {{local}}/users/67891bcd4aa16773dbc40639
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg5MWJjZDRhYTE2NzczZGJjNDA2MzkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzM3MDM4ODk5LCJleHAiOjE3MzcwNDI0OTl9.-JFf9ZZf6rtG2wcglI1ViJs7Udtm3-sP6BTqx3ZGlng

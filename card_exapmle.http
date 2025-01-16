@@ -1,0 +1,69 @@
+@local = http://localhost:3007
+
+### Get all cards
+GET {{local}}/cards
+
+
+### Get user card
+GET {{local}}/cards/my-cards
+x-auth-token: {token}
+
+### Get Card by id card
+GET {{local}}/cards/677fd50da80b956e1e9d267c
+
+
+
+### create card
+POST {{local}}/cards/
+x-auth-token: {token}
+Content-Type: application/json
+
+{
+    "title": "test111",
+    "subtitle": "testing",
+    "description": "testing 111",
+    "phone": "0506789092",
+    "email": "test1@gmail.com",
+    "web": "https://www.test.co.il",
+    "image":{},
+    "address": {
+        "state": "",
+        "country": "test",
+        "city": "test",
+        "street": "test",
+        "houseNumber": 2,
+        "zip": 0
+    }
+}
+
+### Update card
+PUT {{local}}/cards/:idcard
+x-auth-token: {token}
+Content-Type: application/json
+
+
+{
+    "title": "test2",
+    "subtitle": "testing",
+    "description": "testing 2",
+    "phone": "0506789092",
+    "email": "test2g@gmail.com",
+    "web": "https://www.test.co.il",
+    "image":{},
+    "address": {
+        "state": "",
+        "country": "test",
+        "city": "test",
+        "street": "test",
+        "houseNumber": 2,
+        "zip": 0
+    }
+}
+
+### Like card
+PATCH {{local}}/cards/:idcard
+x-auth-token: {token}
+
+### Delete card
+DELETE {{local}}/cards/:idcard
+x-auth-token: {token}
